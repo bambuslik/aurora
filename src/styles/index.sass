@@ -1,0 +1,1125 @@
+@import "constants"
+@import "fonts"
+@import "elements"
+
+body
+  font-family: 'Cera Pro', Arial, sans-serif
+  color: #222222
+  line-height: 1.3
+
+//SECTION PROMO
+.section-promo
+  padding-top: 40px
+  background: url('../images/section-promo/bg-plus-element.jpg') no-repeat center
+  background-size: cover
+  @media (max-width: 1040px)
+    background: url('../images/section-promo/bg.jpg') no-repeat center top
+  @media (max-width: 768px)
+    padding-top: 20px
+
+  &__wrapper
+    display: flex
+    flex-wrap: wrap
+    @media (max-width: 1040px)
+      justify-content: center
+
+  &__title
+    margin-top: 100px
+    font-size: 50px
+    font-weight: 700
+    //line-height: 1
+    @media (max-width: 1040px)
+      margin-top: 20px
+      font-size: 42px
+      text-align: center
+    @media (max-width: 768px)
+      font-size: 24px
+
+  &__sub-title
+    font-size: 30px
+    font-weight: 700
+    margin-top: 40px
+    @media (max-width: 1040px)
+      text-align: center
+    @media (max-width: 768px)
+      font-size: 24px
+      margin-top: 20px
+
+  &__info
+    max-width: 650px
+
+  &__info-list
+    list-style: none
+    padding: 0
+    display: flex
+    justify-content: space-between
+    max-width: 600px
+    margin: 50px auto 0
+    @media (max-width: 768px)
+      margin-top: 20px
+      flex-direction: column
+      max-width: 400px
+
+  &__form
+    margin-top: 70px
+    @media (max-width: 768px)
+      margin-top: 20px
+
+  &__triggers
+    margin: 338px 0 0 190px
+    @media (max-width: 1216px)
+      margin-left: 30px
+
+    &_mobile
+      display: none
+      @media (max-width: 1040px)
+        display: block
+      @media (max-width: 768px)
+        position: relative
+
+      &:before
+        @media (max-width: 768px)
+          content: ''
+          display: block
+          position: absolute
+          bottom: 0
+          left: 50%
+          transform: translateX(-50%)
+          width: 151px
+          height: 381px
+          background: url('../images/section-promo/bg-element-mobile.png') no-repeat center
+
+    &_desktop
+      @media (max-width: 1040px)
+        display: none
+
+    @media (max-width: 1040px)
+      margin: 20px 0 0 0
+
+.page-header
+  width: 100%
+
+.headline
+  display: flex
+  justify-content: space-between
+  align-items: center
+  position: relative
+  @media (max-width: 1064px)
+    flex-direction: column
+    align-items: center
+
+  &__burger-logo-cont
+    @media (max-width: 1064px)
+      display: flex
+      width: 100%
+
+  &__logo
+    @media (max-width: 1064px)
+      margin: 0 auto
+
+    &_burger
+      padding-right: 40px
+
+  &__logo-rent
+    align-self: flex-start
+    margin-left: 20px
+    @media (max-width: 1064px)
+      margin-left: 0
+      margin-top: 20px
+      align-self: center
+
+  &__tel
+    margin-left: auto
+    @media (max-width: 1064px)
+      margin: 20px 0 0
+
+  &__button
+    margin-left: 30px
+    @media (max-width: 1064px)
+      margin: 20px 0 0
+      width: 100%
+      max-width: 320px
+
+.nav-list
+  position: absolute
+  display: none
+  background: #2b2b2bf7
+  top: -20px
+  left: -10px
+  right: -10px
+  list-style: none
+  padding: 60px 30px 60px 60px
+  flex-direction: column
+  z-index: 2
+
+  &_mob-active
+    display: flex
+
+  &__item
+    margin: 4px 8px
+
+  &__link
+    color: #FFF
+    font-size: 20px
+    text-decoration: none
+
+
+.mob-burger
+  display: none
+  justify-content: center
+  width: 40px
+  height: 24px
+  border: none
+  padding: 0
+  cursor: pointer
+  background: none
+  position: relative
+  outline: none
+  margin-bottom: 14px
+  z-index: 3
+  @media (max-width: 1064px)
+    display: flex
+
+  &__line
+    width: 100%
+    height: 2px
+    background: #dc2c2c
+    position: absolute
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    transition: .3s all ease
+
+    &:nth-child(1)
+      top: 0
+      left: 0
+
+    &:nth-child(2)
+      top: 50%
+      transform: translate(0, -50%)
+      left: 0
+
+    &:nth-child(3)
+      bottom: 0
+      left: 0
+
+.mob-burger_active .mob-burger__line:nth-child(1)
+  top: 50%
+  transform: translate(0, -50%) rotate(45deg)
+
+.mob-burger_active .mob-burger__line:nth-child(2)
+  opacity: 0
+
+.mob-burger_active .mob-burger__line:nth-child(3)
+  bottom: 50%
+  transform: translate(0, 50%) rotate(-45deg)
+
+.logo
+
+  &__title
+    margin: 0
+    text-align: center
+    font-size: 14px
+
+  &__img
+    margin-top: 4px
+
+.tel
+  position: relative
+  padding: 0 0 0 50px
+
+  &:before
+    content: ''
+    position: absolute
+    top: 4px
+    left: 0
+    width: 30px
+    height: 30px
+    background: url('../images/elements/contacts/tel-ico.png') no-repeat center
+
+  &__number
+    font-size: 35px
+    font-weight: 700
+    line-height: 1
+
+  &__info
+    margin: 0
+    font-size: 14px
+
+.promo-info-list-item
+  text-align: center
+  margin: 0 6px
+  @media (max-width: 768px)
+    margin-top: 16px
+    display: flex
+    align-items: center
+    text-align: left
+
+  &__img-cont
+    @media (max-width: 768px)
+      width: 40px
+      height: 40px
+      text-align: center
+      flex-shrink: 0
+      margin-right: 20px
+
+    img
+      @media (max-width: 768px)
+        max-width: 100%
+        max-height: 100%
+
+  &__title
+    margin: 16px 0 0
+    @media (max-width: 768px)
+      margin-top: 0
+
+.promo-triggers
+  list-style: none
+  padding: 0 20px
+  @media (max-width: 768px)
+    padding: 190px 20px 50px
+
+  &__item
+    position: relative
+    background: #fff
+    margin: 10px 5px 0 5px
+    padding: 10px 40px 10px 10px
+    z-index: 1
+
+    &:before
+      content: '0'
+      position: absolute
+      z-index: -1
+      display: block
+      text-indent: -9999px
+      overflow: hidden
+      padding: 10px
+      top: 0
+      left: -10px
+      width: 1px
+      background: #fff
+      transform: skewX(-25deg)
+
+    &:after
+      content: '0'
+      position: absolute
+      z-index: -1
+      display: block
+      text-indent: -9999px
+      overflow: hidden
+      padding: 10px
+      top: 0
+      right: -10px
+      width: 1px
+      transform: skewX(-25deg)
+      border-right: 10px solid #dc3334
+
+  &__item-line-decor
+    width: 10px
+    padding: 10px 0
+    position: absolute
+    top: 0
+    right: 0
+    transform: skewX(-25deg)
+    background: #ed9999
+
+//SECTION BENEFIT
+.section-benefit
+  padding-bottom: 100px
+  @media (max-width: 768px)
+    padding-bottom: 30px
+
+  &__content
+    padding-top: 40px
+    display: flex
+    justify-content: space-between
+    @media (max-width: 824px)
+      flex-direction: column
+      padding-top: 10px
+
+
+  &__text-triggers-cont
+    width: 36%
+    display: flex
+    background: url('../images/section-benefit/text-triggers-bg.png') no-repeat 100% 50%
+    @media (max-width: 824px)
+      width: 100%
+      background: none
+
+  &__text-triggers
+    list-style: none
+    padding: 0
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: flex-end
+    @media (max-width: 824px)
+      align-items: center
+
+  &__text-triggers-item
+    max-width: 305px
+    font-size: 14px
+    text-align: right
+    margin-top: 18px
+    &:nth-child(1)
+      margin-top: 0
+    @media (max-width: 824px)
+      text-align: center
+      max-width: none
+      margin-top: 16px
+
+    &_padding-right
+      padding-right: 40px
+      @media (max-width: 824px)
+        padding-right: 0
+
+  &__bg-img-cont
+    @media (max-width: 824px)
+      height: 360px
+      text-align: center
+      padding: 10px 0
+
+    img
+      @media (max-width: 824px)
+        height: 100%
+
+  &__panel-triggers-cont
+    width: 36%
+    display: flex
+    justify-content: flex-end
+    @media (max-width: 824px)
+      width: 100%
+      justify-content: center
+
+  &__panel-triggers
+    list-style: none
+    padding: 0
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+
+  &__panel-triggers-item
+    font-weight: 700
+    line-height: 1.6
+    max-width: 380px
+    box-sizing: border-box
+    padding: 20px 26px 20px 66px
+    background: url('../images/v-ico.png') no-repeat 26px center
+    border: 1px solid #d8e5f4
+    box-shadow: 0 3px 5px 2px rgba(216, 229, 244, 0.51)
+    @media (max-width: 824px)
+      max-width: none
+      margin-top: 10px
+      padding: 16px 20px 20px 66px
+
+    br
+      @media (max-width: 824px)
+        display: none
+
+//SECTION SALE
+.section-sale
+  padding-top: 100px
+  position: relative
+  background: url('../images/section-sale/bg.jpg') no-repeat center / cover
+  text-align: center
+  @media (max-width: 768px)
+    padding-top: 40px
+
+  &:after
+    content: ''
+    background: url('../images/section-sale/bg-element.png') no-repeat center
+    position: absolute
+    left: calc(50% - 910px)
+    top: -72px
+    width: 537px
+    height: 688px
+
+  &__button
+    min-width: 360px
+    min-height: 60px
+    box-sizing: border-box
+    font-size: 25px
+    margin: 60px auto 0
+    @media (max-width: 768px)
+      font-size: 18px
+      min-width: 300px
+      margin-top: 20px
+
+
+.sales-list
+  list-style: none
+  padding: 0
+  display: flex
+  justify-content: space-between
+  @media (max-width: 768px)
+    flex-direction: column
+    align-items: center
+
+  &__item
+    text-align: center
+    width: 33%
+    @media (max-width: 768px)
+      width: 100%
+
+  &__item-title
+    font-size: 160px
+    font-weight: 700
+    color: #fff
+    @media (max-width: 1074px)
+      font-size: 120px
+
+  &__item-info
+    font-size: 25px
+    color: #fff
+    font-weight: 700
+    @media (max-width: 1074px)
+      font-size: 22px
+
+//SECTION ADVANTAGES
+.section-advantages
+
+.advantages-headline
+  display: flex
+  column-gap: 40px
+  list-style: none
+  padding: 0
+  @media (max-width: 980px)
+    flex-wrap: wrap
+
+  &__item
+    width: 50%
+    @media (max-width: 980px)
+      width: 100%
+      &:nth-child(2)
+        margin-top: 20px
+
+    img
+      @media (max-width: 980px)
+        width: 60px
+
+.advantages-headline-item
+  display: flex
+  align-items: center
+
+  &__img
+
+  &__title
+    font-size: 20px
+    font-weight: 700
+    margin-left: 20px
+    @media (max-width: 980px)
+      font-size: 18px
+
+.advantages-lifters
+  list-style: none
+  padding: 0
+  margin-top: 20px
+  display: flex
+  column-gap: 40px
+  @media (max-width: 980px)
+    flex-direction: column
+
+  &__item
+    width: 50%
+    @media (max-width: 980px)
+      width: 100%
+
+.advantages-lifters-item
+  &:nth-child(1)
+    background: url('../images/section-advantages/lifter-01.jpg') no-repeat 90% 0
+    @media (max-width: 980px)
+      background: url('../images/section-advantages/lifter-01.jpg') no-repeat 100% 0 / auto 300px
+    @media (max-width: 524px)
+      background: url('../images/section-advantages/lifter-01.jpg') no-repeat 50% 100% / auto 300px
+
+  &:nth-child(2)
+    background: url('../images/section-advantages/lifter-02.jpg') no-repeat 90% 0
+    @media (max-width: 980px)
+      background: url('../images/section-advantages/lifter-02.jpg') no-repeat 100% 0 / auto 300px
+    @media (max-width: 524px)
+      background: url('../images/section-advantages/lifter-02.jpg') no-repeat 50% 100% / auto 300px
+
+.advantages-lifters-triggers
+  list-style: none
+  padding: 0 260px 0 0
+  min-height: 360px
+  box-sizing: border-box
+  @media (max-width: 980px)
+    padding-right: 160px
+  @media (max-width: 524px)
+    padding: 0 0 320px 0
+
+  &__item
+    margin-top: 12px
+    padding: 20px 30px
+    border: 1px solid #d8e5f4
+    border-right: 5px solid #dc3334
+    box-shadow: 1px 0px 13px 0px rgba(216, 229, 244, .51)
+    background: #fff
+
+//SECTION CATALOG
+.section-catalog
+  background: #f9f9f9 url('../images/section-catalog/bg.jpg') no-repeat center top / cover
+  position: relative
+
+  &:after
+    content: ''
+    position: absolute
+    right: 0
+    top: -34px
+    width: 367px
+    height: 497px
+    background: url('../images/section-catalog/bg-element.png') no-repeat center
+    @media (max-width: 1353px)
+      display: none
+
+.catalog-menu
+  list-style: none
+  padding: 0
+  display: flex
+  justify-content: center
+  column-gap: 20px
+  @media (max-width: 768px)
+    margin-top: 20px
+    flex-wrap: wrap
+
+  &__item
+
+  &__item-link
+    color: rgba(34, 34, 34, 0.71)
+    text-decoration: none
+    display: block
+    padding: 6px
+    font-weight: 700
+
+    &_active
+      color: #dc3334
+      text-decoration: underline
+
+.catalog-cards
+  //list-style: none
+  margin: 40px 0 0
+  //padding: 0
+  display: flex
+  flex-wrap: wrap
+  grid-template-columns: 1fr 1fr
+  gap: 30px
+  @media (max-width: 810px)
+    gap: 10px
+
+.catalog-cards-item
+  background: #fff
+  border: 1px solid #d8e5f4
+  box-shadow: 0 3px 5px 2px rgba(216, 229, 244, .51)
+  display: flex
+  box-sizing: border-box
+  width: 48%
+  @media (max-width: 1160px)
+    flex-direction: column
+  @media (max-width: 810px)
+    width: 100%
+
+  //  width: 100%
+
+  &__img-cont
+    flex-shrink: 0
+    width: 222px
+    box-sizing: border-box
+    padding: 26px
+    display: flex
+    justify-content: center
+    align-items: center
+    border-right: 1px solid #d8e5f4
+    @media (max-width: 1160px)
+      width: 100%
+      border-right: none
+      border-bottom: 1px solid #d8e5f4
+
+
+  &__info
+    padding: 26px
+
+  &__title
+    font-size: 18px
+    font-weight: 700
+
+  &__info-line
+    margin-top: 20px
+    display: flex
+    justify-content: space-between
+    font-size: 15px
+
+  &__info-tech-name
+
+  &__info-tech-value
+    font-weight: 700
+
+  &__bottom-line
+    margin-top: 25px
+    display: flex
+    align-items: center
+
+  &__product-status
+    background: url('../images/section-catalog/v-ico-green.png') no-repeat 0 center
+    padding: 0 0 0 16px
+
+  &__button
+    flex-grow: 1
+    margin-left: 30px
+
+.catalog-cards-show-more-button-cont
+  width: 100%
+  text-align: center
+
+.catalog-cards-show-more-button
+  display: block
+  margin: 0 auto
+
+//SECTION SUPERIORITY
+.section-superiority
+  background: url('../images/section-superiority/bg.jpg') no-repeat calc(50% + 650px) 40px
+
+.superiority-list
+  margin-top: 40px
+  list-style: none
+  padding: 0
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr
+  gap: 30px
+  @media (max-width: 990px)
+    grid-template-columns: 1fr 1fr
+  @media (max-width: 768px)
+    gap: 10px
+  @media (max-width: 554px)
+    grid-template-columns: 1fr
+
+
+.superiority-list-item
+  border: 1px solid #d8e5f4
+  box-shadow: 0 3px 5px 2px rgba(216, 229, 244, .51)
+  padding: 28px 28px 28px 68px
+  background: #fff url('../images/v-ico.png') no-repeat 28px 36px
+
+
+  &__title
+    font-weight: 700
+
+  &__text
+    margin-top: 6px
+
+
+//SECTION SALES LEADERS
+.section-sales-leaders
+  background: url('../images/section-sales-leaders/bg.jpg') no-repeat center
+  background-size: cover
+
+.sales-leaders-slider
+  margin-top: 46px
+  border: 1px solid #d8e5f4
+  box-shadow: 0 3px 5px 2px rgba(216, 229, 244, .51)
+  background: #fff
+  display: flex
+  @media (max-width: 768px)
+    margin-top: 20px
+    flex-direction: column
+
+  &__img-cont
+    border-right: 1px solid #d8e5f4
+    padding: 50px
+    min-width: 486px
+    box-sizing: border-box
+    display: flex
+    justify-content: center
+    align-items: center
+    @media (max-width: 993px)
+      padding: 30px
+      min-width: auto
+    @media (max-width: 768px)
+      height: 320px
+
+    img
+      max-height: 100%
+
+  &__info
+    padding: 50px 80px
+    width: 100%
+    @media (max-width: 993px)
+      padding: 30px
+    @media (max-width: 768px)
+      width: auto
+
+
+  &__title
+    font-size: 25px
+    font-weight: 700
+
+  &__sub-title
+    font-size: 18px
+    margin-bottom: 26px
+
+  &__info-line
+    margin-top: 10px
+    display: flex
+    justify-content: space-between
+    font-size: 15px
+    background: url('../images/section-sales-leaders/line-divider.png') repeat-x 0 50%
+
+  &__info-tech-name
+    background: #fff
+    padding: 0 16px 0 0
+
+  &__info-tech-value
+    background: #fff
+    font-weight: 700
+    padding: 0 0 0 16px
+
+  &__info-price
+    margin-top: 26px
+    font-size: 25px
+    font-weight: 700
+    @media (max-width: 768px)
+      text-align: center
+
+  &__sales-last-month-title
+    margin-top: 34px
+    font-size: 15px
+    font-weight: 700
+    @media (max-width: 768px)
+      text-align: center
+      margin-top: 10px
+
+  &__sales-last-month
+    margin-top: 6px
+    font-size: 25px
+    font-weight: 700
+    color: #dc3334
+    @media (max-width: 768px)
+      text-align: center
+      margin-top: 10px
+
+  &__button
+    margin-top: 26px
+    @media (max-width: 768px)
+      width: 100%
+      text-align: center
+      margin-top: 10px
+
+.sales-leaders-slider-navigation
+  text-align: right
+  margin-top: 60px
+  @media (max-width: 768px)
+    text-align: center
+    margin-top: 20px
+
+  &__prev, &__next
+    width: 51px
+    height: 30px
+    font-size: 0
+    text-indent: -9999px
+    border: none
+    outline: none
+    cursor: pointer
+    transition: opacity .2s ease-in
+
+    &:hover
+      opacity: .2
+
+
+  &__prev
+    background: url('../images/elements/slider/prev-arrow-ico.png') no-repeat center
+
+  &__next
+    background: url('../images/elements/slider/next-arrow-ico.png') no-repeat center
+    margin-left: 30px
+
+//SECTION HELP CHOOSE
+.section-help-choose
+  padding: 90px 0
+  text-align: center
+  color: #fff
+  @media (max-width: 768px)
+    padding: 40px 0
+
+  &_lifter-bg
+    background: url('../images/section-help-choose/bg-2.jpg') no-repeat center / cover
+
+  &_office-bg
+    position: relative
+    background: url('../images/section-help-choose/bg.jpg') no-repeat center / cover
+
+    &:after
+      position: absolute
+      content: ''
+      width: 259px
+      height: 646px
+      left: calc(50% - 860px)
+      bottom: -38px
+      background: url('../images/section-help-choose/bg-element.png') no-repeat center
+
+  &__sub-title
+    font-size: 18px
+
+  &__title
+    font-size: 50px
+    font-weight: 700
+    margin-top: 10px
+    @media (max-width: 768px)
+      font-size: 30px
+
+
+  &__button
+    margin: 50px
+    height: 60px
+    font-size: 20px
+    color: #222
+    @media (max-width: 768px)
+      margin: 20px 0
+      font-size: 18px
+
+  &__sub-button
+    font-size: 18px
+
+//SECTION PHOTOS
+.section-photos
+  &__slider
+    margin-top: 50px
+
+.photos-slider
+  box-sizing: border-box
+  list-style: none
+  padding: 0
+
+  &__item
+
+  &__item-img
+    width: 100%
+    height: auto
+
+.tns-nav
+  display: flex
+  justify-content: center
+  margin: 40px 0 0
+
+  button
+    display: block
+    margin: 0 10px
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    border: 4px solid #dc3334
+    background: transparent
+    outline: none
+
+    @media(max-width: 768px)
+      width: 14px
+      height: 14px
+      margin: 0 6px
+      border: 1px solid #dc3334
+
+    &.tns-nav-active
+      background: #dc3334
+
+//SECTION ABOUT
+.section-about
+  position: relative
+  background: url('../images/section-about/bg.jpg') no-repeat center
+  background-size: cover
+
+  &:after
+    content: ''
+    position: absolute
+    left: calc(50% + 610px)
+    bottom: -55px
+    width: 276px
+    height: 733px
+    background: url('../images/section-about/bg-element.png') no-repeat center
+    @media (max-width: 1794px)
+      display: none
+
+
+.about-panel
+  margin-top: 50px
+  display: flex
+  border: 1px solid #d8e5f4
+  box-shadow: 0 3px 5px 2px rgba(216, 229, 244, .51)
+  @media (max-width: 915px)
+    flex-direction: column
+  @media (max-width: 768px)
+    margin-top: 20px
+
+  &__img
+    background: url('../images/section-about/panel-ico.jpg') no-repeat center bottom
+    background-size: cover
+    width: 487px
+    flex-shrink: 0
+    @media (max-width: 915px)
+      display: none
+
+  &__info
+    padding: 90px
+    background: #fff
+    flex-grow: 1
+    @media (max-width: 1080px)
+      padding: 40px
+    @media (max-width: 768px)
+      padding: 20px
+
+.about-list
+  list-style: none
+  padding: 0
+
+.about-list-item
+  margin-top: 30px
+  padding: 0 0 0 100px
+  min-height: 80px
+  @media (max-width: 768px)
+    padding-left: 80px
+
+  &:first-child
+    margin-top: 0
+
+  &_calend
+    background: url('../images/section-about/calendar-ico.jpg') no-repeat 0 0
+
+  &_wallet
+    background: url('../images/section-about/wallet-ico.jpg') no-repeat 0 0
+
+  &_lifter
+    background: url('../images/section-about/lifter-ico.jpg') no-repeat 0 0
+
+  &__title
+    font-weight: 700
+
+//SECTION SCOPE
+.section-scope
+
+.scope-list
+  list-style: none
+  padding: 0
+  display: grid
+  grid-template-columns: 1fr 1fr 1fr 1fr
+  gap: 30px
+  @media (max-width: 1025px)
+    grid-template-columns: 1fr 1fr
+  @media (max-width: 768px)
+    margin-top: 20px
+  @media (max-width: 515px)
+    grid-template-columns: 1fr
+
+.scope-list-item
+  font-size: 0
+  border: 1px solid #d8e5f4
+  box-shadow: 0 3px 5px 2px rgba(216, 229, 244, .51)
+
+  &__img
+    width: 100%
+    height: auto
+
+  &__title
+    font-size: 16px
+    font-weight: 700
+    padding: 10px 30px
+    display: flex
+    align-items: center
+
+//SECTION MAP
+.section-map
+  height: 800px
+  padding: 0
+  @media (max-width: 768px)
+    height: 400px
+    margin-bottom: 480px
+
+  &__wrapper-hack
+    position: relative
+    z-index: 2
+    padding: 0 20px
+    top: 92px
+    max-width: 1182px
+    margin: 0 auto
+    @media (max-width: 768px)
+      top: 330px
+
+  &__info
+    position: absolute
+    top: 0
+    left: 50px
+    background: #fff
+    border: 1px solid #d8e5f4
+    box-shadow: 0 3px 5px 2px rgba(216, 229, 244, .51)
+    @media (max-width: 768px)
+      //position: static
+      left: 10px
+      width: calc(100% - 20px)
+
+
+.map-info
+  &__contacts
+    padding: 30px
+    border-bottom: 1px solid #d8e5f4
+
+  &__contacts-title
+    font-size: 20px
+    font-weight: 700
+
+  &__contacts-list
+    list-style: none
+    margin-top: 16px
+    padding: 0
+
+  &__contacts-item
+    margin-top: 16px
+    padding: 0 0 0 46px
+    min-height: 30px
+    display: flex
+    align-items: center
+
+    &:first-child
+      margin-top: 0
+
+    &_tel
+      font-size: 30px
+      font-weight: 700
+      background: url('../images/elements/contacts/tel-ico.png') no-repeat 0 50%
+
+    &_mail
+      font-size: 14px
+      background: url('../images/elements/contacts/email-ico.png') no-repeat 2px 50%
+
+    &_address
+      font-size: 14px
+      background: url('../images/elements/contacts/address-ico.png') no-repeat 5px 50%
+
+  &__cities-list
+    list-style: none
+    padding: 0
+
+  &__city
+    padding: 20px 30px
+    font-weight: 700
+    border-bottom: 1px solid #d8e5f4
+    cursor: pointer
+    transition: border .3s ease-out
+
+    &_active, &:hover
+      border-left: 8px solid #dc3334
+      color: #df3d3d
+
+//SECTION FOOTER
+.section-footer
+  padding-top: 40px
+  padding-bottom: 40px
+
+
+//POPUPS
+.popup
+  display: none
+
+.fancybox-content
+  padding: 30px
+
+
+
+
+
+

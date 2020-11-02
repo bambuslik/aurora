@@ -1,0 +1,175 @@
+@import "constants"
+
+h1, h2, h3, h4, h5, h6, p, ul
+  margin: 0
+
+.section
+  padding-top: 60px
+  padding-bottom: 72px
+  @media(max-width: 768px)
+    padding-top: 30px
+    padding-bottom: 30px
+
+  &__wrapper
+    max-width: $section-wrapper-width
+    margin: 0 auto
+    padding: 0 20px
+    @media(max-width: 768px)
+      padding: 0 10px
+
+  &__title
+    padding-top: 20px
+    font-size: 50px
+    font-weight: 700
+    text-align: center
+    @media (max-width: 768px)
+      font-size: 30px
+      padding-top: 0
+
+    &_black
+      color: #222222
+
+    &_white
+      color: #fff
+
+    &_bg-text
+      position: relative
+      z-index: 1
+
+      &:before
+        content: 'AURORA'
+        color: #f9f9f9
+        position: absolute
+        font-size: 160px
+        line-height: .8
+        z-index: -1
+        left: 50%
+        transform: translateX(-50%)
+        top: 0
+        @media (max-width: 768px)
+          display: none
+
+  &__sub-title
+    margin-top: 6px
+    margin-bottom: 40px
+    font-size: 18px
+    text-align: center
+    @media (max-width: 768px)
+      font-size: 16px
+      margin-bottom: 0
+
+    &_black
+      color: #222222
+
+    &_white
+      color: #fff
+
+    &_bg-text
+      position: relative
+      z-index: 1
+
+.link
+  color: #222
+  text-decoration: none
+  transition: opacity .2s ease-in
+
+  &:hover
+    opacity: .2
+
+.button
+  border: none
+  padding: 18px 20px
+  cursor: pointer
+  outline: none
+  font-size: 14px
+  font-weight: 700
+  transition: opacity .2s ease-in
+
+  &_white
+    background: #fff
+    color: #dc3334
+
+  &_red
+    background: #dc3334
+    color: #ffffff
+
+  &_black
+    background: #222
+    color: #fff
+
+  &:hover
+    opacity: .2
+
+.red-color
+  color: #dc3334
+  @media (max-width: 768px)
+    white-space: nowrap
+
+.form-panel
+  background: #fff
+  box-sizing: border-box
+  padding: 30px
+  border: 1px solid #d8e5f4
+  border-bottom: 10px solid #dc3334
+  box-shadow: 0 0 5px 2px rgba(216, 229, 244, .51)
+  @media (max-width: 768px)
+    padding: 20px
+
+  &_popup
+    border: none
+    max-width: 500px
+
+  &__title
+    font-size: 18px
+    font-weight: 700
+    @media (max-width: 768px)
+      text-align: center
+
+  &__form
+    margin-top: 20px
+
+.form
+  display: flex
+  @media (max-width: 768px)
+    flex-direction: column
+
+  &_popup
+    flex-direction: column
+
+  &__input-text
+    border: 1px solid #d8e5f4
+    padding: 18px
+    max-width: 180px
+    box-sizing: border-box
+    @media (max-width: 768px)
+      max-width: none
+      margin-bottom: 12px
+
+    &_popup
+      max-width: none
+      margin-bottom: 12px
+
+    &::placeholder
+      font-size: 14px
+      color: #222
+
+    &:nth-child(2)
+      border-left: none
+      @media (max-width: 768px)
+        border-left: 1px solid #d8e5f4
+
+    &_popup:nth-child(2)
+      border-left: 1px solid #d8e5f4
+
+
+  &__submit
+    margin-left: 30px
+    flex-grow: 1
+    @media (max-width: 768px)
+      margin-left: 0
+
+    &_popup
+      margin-left: 0
+
+
+
