@@ -9,9 +9,6 @@ const mobBurgerBtnElement = document.querySelector('.mob-burger');
 const mobMenuElement = document.querySelector('.nav-list');
 
 mobBurgerBtnElement.addEventListener('click', (event) => {
-  console.log(
-    9
-  );
   mobBurgerBtnElement.classList.toggle('mob-burger_active');
   mobMenuElement.classList.toggle('nav-list_mob-active');
 });
@@ -34,8 +31,8 @@ const catalogListElement = document.querySelector('.catalog-cards');
 const catalogMenuFilterElements = document.querySelectorAll('.catalog-menu__item-link');
 let catalogCardsFilter = 'all'
 let catalogCardsShowMoreStart = 0;
-//desktop = 11, mobile = 3
-let catalogCardsShowMoreStep = 3;
+//desktop = 11, mobile = 4
+let catalogCardsShowMoreStep = 4;
 let catalogCardsShowMoreEnd = catalogCardsShowMoreStart + catalogCardsShowMoreStep;
 
 function setCatalogCards(cardsList, filter) {
@@ -43,29 +40,12 @@ function setCatalogCards(cardsList, filter) {
   let showMore = true;
   catalogCardsFilter = filter;
 
-  switch (filter) {
-    case '220v':
-      filteredCardsList = cardsList.filter((card) => {
-        if (card.voltage === 220) return card;
-      });
-      break;
-
-    case '330v':
-      filteredCardsList = cardsList.filter((card) => {
-        if (card.voltage === 330) return card;
-      });
-      break;
-
-    case 'universal':
-      filteredCardsList = cardsList;
-      break;
-
-    case 'height':
-      filteredCardsList = cardsList;
-      break;
-
-    default:
-      filteredCardsList = cardsList;
+  if (catalogCardsFilter === 'all') {
+    filteredCardsList = cardsList;
+  } else {
+    filteredCardsList = cardsList.filter((card) => {
+      if (card.filter === Number(catalogCardsFilter)) return card;
+    });
   }
 
   for (let i = 0; i < catalogCardsShowMoreEnd; i++) {
@@ -75,17 +55,21 @@ function setCatalogCards(cardsList, filter) {
     }
 
     const catalogCardTemplate = document.querySelector('.catalog-card-template').content.querySelector('.catalog-cards-item').cloneNode(true);
+    const catalogCardImgElement = catalogCardTemplate.querySelector('.catalog-cards-item__img');
     const catalogCardTitleElement = catalogCardTemplate.querySelector('.catalog-cards-item__title');
+    const catalogCardTypeElement = catalogCardTemplate.querySelector('.catalog-cards-item-type');
     const catalogCardHeightElement = catalogCardTemplate.querySelector('.catalog-cards-item-height');
     const catalogCardWeightElement = catalogCardTemplate.querySelector('.catalog-cards-item-weight');
     const catalogCardPowerTypeElement = catalogCardTemplate.querySelector('.catalog-cards-item-power-type');
-    const catalogCardVoltageElement = catalogCardTemplate.querySelector('.catalog-cards-item-voltage');
+    const catalogCardCarryElement = catalogCardTemplate.querySelector('.catalog-cards-item-carry');
 
+    catalogCardImgElement.src = `images/section-catalog/cards/${filteredCardsList[i].imgLink}`;
     catalogCardTitleElement.textContent = filteredCardsList[i].name;
+    catalogCardTypeElement.textContent = filteredCardsList[i].type;
     catalogCardHeightElement.textContent = filteredCardsList[i].height;
-    catalogCardWeightElement.textContent = filteredCardsList[i].carrying;
+    catalogCardWeightElement.textContent = filteredCardsList[i].weight;
+    catalogCardCarryElement.textContent = filteredCardsList[i].carrying;
     catalogCardPowerTypeElement.textContent = filteredCardsList[i].powerType
-    catalogCardVoltageElement.textContent = filteredCardsList[i].voltage
 
     catalogListElement.append(catalogCardTemplate);
   }
@@ -208,19 +192,35 @@ let photosSlider = tns({
 //SECTION MAP
 //map start
 let myMap;
-let lat = 55.753215;
-let lng = 37.622504;
+//default city
+let markerLat = 55.914292;
+let markerLng = 37.417769;
+let centerLat = 55.914636;
+let centerLng = 37.414357;
+let centerLatMob = 55.918684;
+let centerLngMob = 37.417554;
+
+const isMobMap = window.screen.width < 768;
 
 function initMap() {
+  let mapX;
+  let MapY;
+  if (isMobMap) {
+    mapX = centerLatMob;
+    MapY = centerLngMob;
+  } else {
+    mapX = centerLat;
+    MapY = centerLng;
+  }
   myMap = new ymaps.Map("map", {
-    center: [lat, lng],
+    center: [mapX, MapY],
     zoom: 16,
     controls: ["zoomControl", "typeSelector"]
   });
   myMap.behaviors.disable('scrollZoom');
 
-  function createMarker(content, lat, lng) {
-    let myPlacemark = new ymaps.Placemark([lat, lng], {
+  function createMarker(content, markerLat, markerLng) {
+    let myPlacemark = new ymaps.Placemark([markerLat, markerLng], {
       hintContent: '',
       balloonContent: ''
     }, {
@@ -232,7 +232,7 @@ function initMap() {
     myMap.geoObjects.add(myPlacemark);
   }
 
-  createMarker('', lat, lng);
+  createMarker('', markerLat, markerLng);
 }
 
 let mapsShown = 0;
@@ -256,10 +256,14 @@ $(document).ready(function () {
 
 // showMap();
 
-function reInitMap(x, y) {
+function reInitMap(markerX, markerY, mapX, mapY, mapXMob, mapYMob) {
   myMap.destroy();
-  lat = x;
-  lng = y;
+  markerLat = markerX;
+  markerLng = markerY;
+  centerLat = mapX;
+  centerLng = mapY;
+  centerLatMob = mapXMob;
+  centerLngMob = mapYMob;
   initMap();
 }
 
@@ -272,6 +276,7 @@ const citySpbElement = document.querySelector('.map-info__city_spb');
 const cityMskElement = document.querySelector('.map-info__city_msk');
 const cityKrasnElement = document.querySelector('.map-info__city_krasn');
 const cityKazanElement = document.querySelector('.map-info__city_kazan');
+const cityVoronezhElement = document.querySelector('.map-info__city_voronezh');
 const cityRostovElement = document.querySelector('.map-info__city_rostov');
 
 const mapInfoContactsTitleElement = document.querySelector('.map-info__contacts-title');
@@ -288,32 +293,44 @@ function setCityContacts(city) {
   mapInfoContactsAddressElement.innerHTML = contacts[city].address;
 }
 
-citySpbElement.addEventListener('click', (event) => {
-  setActiveCityLink(event);
-  setCityContacts('spb');
-  reInitMap(59.939095, 30.315868);
-});
-
 cityMskElement.addEventListener('click', (event) => {
   setActiveCityLink(event);
   setCityContacts('msk');
-  reInitMap(55.753215, 37.622504);
+  reInitMap(55.914292, 37.417769, 55.914636, 37.414357, 55.918684, 37.417554);
 });
 
-cityKrasnElement.addEventListener('click', (event) => {
+citySpbElement.addEventListener('click', (event) => {
   setActiveCityLink(event);
-  reInitMap(45.035470, 38.975313);
-});
-
-cityKazanElement.addEventListener('click', (event) => {
-  setActiveCityLink(event);
-  reInitMap(55.796127, 49.106405);
+  setCityContacts('spb');
+  reInitMap(59.944702, 30.515438, 59.945008, 30.511619, 59.948022, 30.514344);
 });
 
 cityRostovElement.addEventListener('click', (event) => {
   setActiveCityLink(event);
-  reInitMap(47.229868, 39.723053);
+  setCityContacts('rostov');
+  reInitMap(47.192296, 39.689932, 47.192859, 39.687207, 47.196004, 39.690704);
 });
+
+cityKazanElement.addEventListener('click', (event) => {
+  setActiveCityLink(event);
+  setCityContacts('kazan');
+  reInitMap(55.825578, 49.021847, 55.826043, 49.018585, 55.828380, 49.022083);
+});
+
+cityKrasnElement.addEventListener('click', (event) => {
+  setActiveCityLink(event);
+  setCityContacts('krasn');
+  reInitMap(45.024488, 39.126338, 45.024816, 39.123805, 45.028329, 39.125982);
+});
+
+cityVoronezhElement.addEventListener('click', (event) => {
+  setActiveCityLink(event);
+  setCityContacts('voronezh');
+  reInitMap(51.680453, 39.176859, 51.680687, 39.174070, 51.684499, 39.176649);
+});
+
+setCityContacts('msk');
+
 
 //JQUERY
 $(document).ready(function () {

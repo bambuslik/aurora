@@ -121,7 +121,7 @@ body
       padding-right: 40px
 
   &__logo-rent
-    align-self: flex-start
+    margin-top: 22px
     margin-left: 20px
     @media (max-width: 1064px)
       margin-left: 0
@@ -329,6 +329,10 @@ body
   @media (max-width: 768px)
     padding-bottom: 30px
 
+  &__sub-title
+    @media (max-width: 768px)
+      display: none
+
   &__content
     padding-top: 40px
     display: flex
@@ -356,13 +360,24 @@ body
     @media (max-width: 824px)
       align-items: center
 
+    &_desktop
+      @media (max-width: 768px)
+        display: none
+
+    &_mobile
+      display: none
+      @media (max-width: 768px)
+        display: block
+
   &__text-triggers-item
     max-width: 305px
     font-size: 14px
     text-align: right
     margin-top: 18px
+
     &:nth-child(1)
       margin-top: 0
+
     @media (max-width: 824px)
       text-align: center
       max-width: none
@@ -410,7 +425,7 @@ body
     @media (max-width: 824px)
       max-width: none
       margin-top: 10px
-      padding: 16px 20px 20px 66px
+      padding: 10px 20px 10px 66px
 
     br
       @media (max-width: 824px)
@@ -424,6 +439,7 @@ body
   text-align: center
   @media (max-width: 768px)
     padding-top: 40px
+    background: #dc3334
 
   &:after
     content: ''
@@ -460,6 +476,8 @@ body
     width: 33%
     @media (max-width: 768px)
       width: 100%
+      display: flex
+      align-items: center
 
   &__item-title
     font-size: 160px
@@ -467,6 +485,9 @@ body
     color: #fff
     @media (max-width: 1074px)
       font-size: 120px
+    @media (max-width: 768px)
+      font-size: 60px
+      min-width: 120px
 
   &__item-info
     font-size: 25px
@@ -474,9 +495,13 @@ body
     font-weight: 700
     @media (max-width: 1074px)
       font-size: 22px
+    @media (max-width: 768px)
+      text-align: left
 
 //SECTION ADVANTAGES
 .section-advantages
+  @media (max-width: 768px)
+    display: none
 
 .advantages-headline
   display: flex
@@ -601,6 +626,7 @@ body
   margin: 40px 0 0
   //padding: 0
   display: flex
+  justify-content: center
   flex-wrap: wrap
   grid-template-columns: 1fr 1fr
   gap: 30px
@@ -617,7 +643,7 @@ body
   @media (max-width: 1160px)
     flex-direction: column
   @media (max-width: 810px)
-    width: 100%
+  //width: 100%
 
   //  width: 100%
 
@@ -634,22 +660,37 @@ body
       width: 100%
       border-right: none
       border-bottom: 1px solid #d8e5f4
+    @media (max-width: 810px)
+      padding: 10px
 
+  &__img
+    @media (max-width: 810px)
+      max-height: 130px
 
   &__info
     padding: 26px
+    @media (max-width: 810px)
+      padding: 10px
 
   &__title
     font-size: 18px
     font-weight: 700
+    @media (max-width: 810px)
+      font-size: 12px
 
   &__info-line
     margin-top: 20px
     display: flex
     justify-content: space-between
     font-size: 15px
+    @media (max-width: 810px)
+      flex-direction: column
+      margin-top: 6px
+      font-size: 12px
 
   &__info-tech-name
+    @media (max-width: 810px)
+      color: #999999
 
   &__info-tech-value
     font-weight: 700
@@ -658,6 +699,8 @@ body
     margin-top: 25px
     display: flex
     align-items: center
+    @media (max-width: 810px)
+      flex-direction: column
 
   &__product-status
     background: url('../images/section-catalog/v-ico-green.png') no-repeat 0 center
@@ -666,6 +709,8 @@ body
   &__button
     flex-grow: 1
     margin-left: 30px
+    @media (max-width: 810px)
+      margin: 10px 0 0
 
 .catalog-cards-show-more-button-cont
   width: 100%
@@ -699,13 +744,16 @@ body
   box-shadow: 0 3px 5px 2px rgba(216, 229, 244, .51)
   padding: 28px 28px 28px 68px
   background: #fff url('../images/v-ico.png') no-repeat 28px 36px
-
+  @media (max-width: 768px)
+    background: #fff url('../images/v-ico.png') no-repeat 28px 28px
 
   &__title
     font-weight: 700
 
   &__text
     margin-top: 6px
+    @media (max-width: 768px)
+      display: none
 
 
 //SECTION SALES LEADERS
@@ -1003,6 +1051,7 @@ body
     grid-template-columns: 1fr 1fr
   @media (max-width: 768px)
     margin-top: 20px
+    gap: 10px
   @media (max-width: 515px)
     grid-template-columns: 1fr
 
@@ -1014,6 +1063,8 @@ body
   &__img
     width: 100%
     height: auto
+    @media (max-width: 768px)
+      display: none
 
   &__title
     font-size: 16px
@@ -1027,8 +1078,7 @@ body
   height: 800px
   padding: 0
   @media (max-width: 768px)
-    height: 400px
-    margin-bottom: 480px
+    height: 900px
 
   &__wrapper-hack
     position: relative
@@ -1038,7 +1088,7 @@ body
     max-width: 1182px
     margin: 0 auto
     @media (max-width: 768px)
-      top: 330px
+      top: 10px
 
   &__info
     position: absolute
@@ -1117,9 +1167,3 @@ body
 
 .fancybox-content
   padding: 30px
-
-
-
-
-
-
